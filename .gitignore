@@ -1,0 +1,26 @@
+# Environment variables
+.env
+
+# Python caching
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Large datasets
+CUB_200_2011.tgz_archive
+CUB_200_2011.tgz/
+data/
+
+# Model Weights (if they are large, you might want to uncomment this)
+# model/*.h5
+# model/*.keras
+
+# IDE / OS files
+.vscode/
+.idea/
+.DS_Store

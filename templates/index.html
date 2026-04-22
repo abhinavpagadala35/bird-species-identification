@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AvianLens - AI Bird Species Identification</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <!-- Vibrant Animated Background - Replaced by image in CSS -->
+    <div class="vibrant-bg"></div>
+    <div class="grain"></div>
+    
+    <main class="container">
+        <header class="header">
+            <div class="header-icon">
+                <i class="ph-fill ph-bird"></i>
+            </div>
+            <h1>Avian<span class="highlight">Lens</span></h1>
+            <p>Discover the magnificent world of birds. Upload an image to reveal the species and fascinating insights instantly.</p>
+        </header>
+
+        <section class="upload-section glass-panel" id="upload-panel">
+            <div class="drop-zone" id="drop-zone">
+                <i class="ph-fill ph-image"></i>
+                <h3>Drop a Feathered Friend Here</h3>
+                <p>or click to browse your gallery</p>
+                <input type="file" id="file-input" accept="image/jpeg, image/png, image/jpg" hidden>
+            </div>
+            
+            <div class="preview-container hidden" id="preview-container">
+                <img id="image-preview" src="" alt="Preview">
+                <div style="display: flex; gap: 1rem;">
+                    <button class="btn btn-secondary" id="reset-btn">
+                        <i class="ph ph-trash"></i> Discard
+                    </button>
+                    <button class="btn btn-primary" id="analyze-btn">
+                        <i class="ph ph-sparkle"></i> Identify Species
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="loading-section hidden" id="loading-section">
+            <i class="ph-fill ph-feather bird-spinner"></i>
+            <p class="loading-text">Observing features...</p>
+        </section>
+
+        <section class="results-section hidden" id="results-section">
+            <div class="grid">
+                <!-- AI Predictions Panel -->
+                <div class="predictions-panel glass-panel">
+                    <h2><i class="ph-fill ph-scan"></i> Identification</h2>
+                    <ul class="predictions-list" id="predictions-list">
+                        <!-- Predictions injected here -->
+                    </ul>
+                </div>
+
+                <!-- LLM Info Panel -->
+                <div class="info-panel glass-panel">
+                    <h2><i class="ph-fill ph-book-open-text"></i> Species Profile</h2>
+                    <div class="info-group accordion-item">
+                        <div class="accordion-header">
+                            <h3><i class="ph-fill ph-info"></i> Description</h3>
+                            <i class="ph ph-caret-down toggle-icon"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <p id="info-description">-</p>
+                        </div>
+                    </div>
+
+                    <div class="info-group accordion-item">
+                        <div class="accordion-header">
+                            <h3><i class="ph-fill ph-tree-evergreen"></i> Habitat</h3>
+                            <i class="ph ph-caret-down toggle-icon"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <p id="info-habitat">-</p>
+                        </div>
+                    </div>
+
+                    <div class="info-group accordion-item">
+                        <div class="accordion-header">
+                            <h3><i class="ph-fill ph-bug"></i> Diet</h3>
+                            <i class="ph ph-caret-down toggle-icon"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <p id="info-diet">-</p>
+                        </div>
+                    </div>
+
+                    <div class="info-group accordion-item">
+                        <div class="accordion-header">
+                            <h3 class="fact"><i class="ph-fill ph-lightbulb"></i> Fascinating Fact</h3>
+                            <i class="ph ph-caret-down toggle-icon"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <p id="info-funfact">-</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="actions">
+                <button class="btn btn-primary" id="new-analysis-btn">
+                    <i class="ph ph-camera-plus"></i> Identify Another Bird
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
